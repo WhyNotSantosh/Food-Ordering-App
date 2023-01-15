@@ -16,7 +16,7 @@ const Body = () => {
     useEffect(() => {
         getSwiggyData();
     }, []);
-    console.log("render");
+    
     getSwiggyData = async () => {
         const data = await fetch(SwiggyPublicDataEndPoint);
         const json = await data.json();
@@ -24,6 +24,10 @@ const Body = () => {
         setRestaurantsList(json?.data?.cards[2]?.data?.data?.cards);
         setSearchRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
     }
+    if (searchRestaurantList.length === 0) {
+        return null;
+    };
+    console.log("render");
     return (
         <React.Fragment>
             <input type="text" className="search-input" placeholder="Search" value={searchText} onChange={(e) => {
@@ -34,9 +38,9 @@ const Body = () => {
                 setRestaurantsList(data);
             }}>Search</button>
             <div className="restaurant-list">
-                {restaurantsList.map((restaurant) => {
+                {restaurantsList?.length > 0 ? restaurantsList.map((restaurant) => {
                     return (<RestaurantCard restaurantsList={restaurant} key={restaurant.data.id} />)
-                })}
+                }) : <h1>No such results found.</h1>}
             </div>
         </React.Fragment>
     )
