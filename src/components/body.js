@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { ImageDomain, SwiggyPublicDataEndPoint } from "../../constants";
 
 
-filterRestaurants = (searchTxt, restaurantsList) => {
-    const filterData = restaurantsList.filter((f) => {
-        f.data.name.includes(searchTxt);
-    });
+function filterRestaurants(searchText, restaurantsList) {
+    const filterData = restaurantsList.filter((restaurant) =>
+        restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
+    );
     return filterData;
 }
 
 const Body = () => {
     const [searchText, setSearchText] = useState();
     const [restaurantsList, setRestaurantsList] = useState([]);
+    const [searchRestaurantList, setSearchRestaurantList] = useState([]);
     useEffect(() => {
         getSwiggyData();
     }, []);
@@ -21,6 +22,7 @@ const Body = () => {
         const json = await data.json();
         console.log(json);
         setRestaurantsList(json?.data?.cards[2]?.data?.data?.cards);
+        setSearchRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
     }
     return (
         <React.Fragment>
@@ -28,12 +30,12 @@ const Body = () => {
                 setSearchText(e.target.value)
             }} />
             <button className="search-btn" onClick={() => {
-                const data = filterRestaurants(searchText, restaurantsList);
+                const data = filterRestaurants(searchText, searchRestaurantList);
                 setRestaurantsList(data);
             }}>Search</button>
             <div className="restaurant-list">
                 {restaurantsList.map((restaurant) => {
-                    return (<RestaurantCard restaurantsList={restaurant} key = {restaurant.data.id}/>)
+                    return (<RestaurantCard restaurantsList={restaurant} key={restaurant.data.id} />)
                 })}
             </div>
         </React.Fragment>
