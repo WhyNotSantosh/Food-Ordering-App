@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ImageDomain, SwiggyPublicDataEndPoint } from "../../constants";
-
+import Shimmer from "./Shimmer";
 
 function filterRestaurants(searchText, restaurantsList) {
     const filterData = restaurantsList.filter((restaurant) =>
@@ -14,9 +14,10 @@ const Body = () => {
     const [restaurantsList, setRestaurantsList] = useState([]);
     const [searchRestaurantList, setSearchRestaurantList] = useState([]);
     useEffect(() => {
+        console.log("USE EFFECT");
         getSwiggyData();
-    }, []);
-    
+    },[]);
+
     getSwiggyData = async () => {
         const data = await fetch(SwiggyPublicDataEndPoint);
         const json = await data.json();
@@ -24,12 +25,12 @@ const Body = () => {
         setRestaurantsList(json?.data?.cards[2]?.data?.data?.cards);
         setSearchRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
     }
-    if (searchRestaurantList.length === 0) {
-        return null;
-    };
+    // if (searchRestaurantList.length === 0) {
+    //     return null;
+    // };
     console.log("render");
-    return (
-        <React.Fragment>
+    return (searchRestaurantList.length === 0) ? <Shimmer /> : (
+        <React.Fragment> 
             <input type="text" className="search-input" placeholder="Search" value={searchText} onChange={(e) => {
                 setSearchText(e.target.value)
             }} />

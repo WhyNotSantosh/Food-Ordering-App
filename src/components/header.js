@@ -1,4 +1,10 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const Header = () => {
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // never write inside a if condition
+    useEffect(() => {
+        console.log("use effect header");
+    }, [isLoggedIn]); // called whenever isLoggedin Changes after first time render
     return (
         <div className="header">
             <a href="/">
@@ -6,13 +12,16 @@ const Header = () => {
             </a>
             <h1> Food Villa </h1>
             <ul className="nav-items">
-                <li>Home</li>
-                <li>About</li>
-                <li>Contact</li>
+                {/* Link tag is converted to a tag but it wil not reload page as react-router-dom keeps track of it */}
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
                 <li>Cart</li>
             </ul>
+            <div>
+                {!isLoggedIn ? <button onClick={() => setIsLoggedIn(true)}>Login</button> : <button onClick={() => setIsLoggedIn(false)}>Logout</button>}
+            </div>
         </div>
-
     )
 }
 
