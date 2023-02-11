@@ -7,6 +7,7 @@ import About from './src/components/About';
 import Error from './src/components/Error';
 import Contact from './src/components/Contact';
 import RestaurantMenu from './src/components/RestaurantMenu';
+import Profile from './src/components/ProfileClass';
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 //const h1 = (<h1>Hello from React Element</h1>); // React Element using JSX
@@ -28,19 +29,23 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: "/about",
-                element: <About />
+                element: <About />,
+                children: [{
+                    path: "profile", // slash is not included because its not that open as localhost/profile
+                    element: <Profile namefromrouter={"Hello"}/>
+                }]
             },
             {
                 path: "/contact",
                 element: <Contact />
             },
             {
-                path:"/",
-                element:<Body/>
+                path: "/",
+                element: <Body />
             },
             {
-                path:"/restaurant/:id",
-                element:<RestaurantMenu/>
+                path: "/restaurant/:id",
+                element: <RestaurantMenu />
             }
         ]
     }

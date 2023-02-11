@@ -11,7 +11,7 @@ const RestaurantMenu = () => {
     }, []);
 
     getRestaurantInfo = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/v4/full?lat=17.3358592&lng=78.527558&menuId=17099");
+        const data = await fetch("https://www.swiggy.com/dapi/menu/v4/full?lat=17.3358592&lng=78.527558&menuId="+id);
         const json = await data.json();
         setRestaurant(json.data);
     }
@@ -21,7 +21,7 @@ const RestaurantMenu = () => {
     return (
         <div>
             <h1> Restaurant Menu : {id} </h1>
-            <h2>{restaurant.Name}</h2>
+            <h2>{restaurant.name}</h2>
             <img src={ImageDomain + restaurant.cloudinaryImageId} alt="item" />
             <h3>{restaurant.area}</h3>
             <h3>{restaurant.city}</h3>

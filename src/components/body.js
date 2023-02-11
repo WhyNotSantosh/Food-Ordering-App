@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { ImageDomain, SwiggyPublicDataEndPoint } from "../../constants";
+import { Link } from "react-router-dom";
+import { SwiggyPublicDataEndPoint } from "../../constants";
+import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 
 function filterRestaurants(searchText, restaurantsList) {
@@ -13,10 +15,13 @@ const Body = () => {
     const [searchText, setSearchText] = useState();
     const [restaurantsList, setRestaurantsList] = useState([]);
     const [searchRestaurantList, setSearchRestaurantList] = useState([]);
+    console.log("hook");
+    console.log(useState());
+    console.log("hook2");
     useEffect(() => {
-        console.log("USE EFFECT");
+        console.log("USE EFFECT body");
         getSwiggyData();
-    },[]);
+    }, []);
 
     getSwiggyData = async () => {
         const data = await fetch(SwiggyPublicDataEndPoint);
@@ -30,7 +35,7 @@ const Body = () => {
     // };
     console.log("render");
     return (searchRestaurantList.length === 0) ? <Shimmer /> : (
-        <React.Fragment> 
+        <React.Fragment>
             <input type="text" className="search-input" placeholder="Search" value={searchText} onChange={(e) => {
                 setSearchText(e.target.value)
             }} />
@@ -40,22 +45,12 @@ const Body = () => {
             }}>Search</button>
             <div className="restaurant-list">
                 {restaurantsList?.length > 0 ? restaurantsList.map((restaurant) => {
-                    return (<RestaurantCard restaurantsList={restaurant} key={restaurant.data.id} />)
+                    return (<Link to={"/restaurant/" + restaurant.data.id} key={restaurant.data.id}><RestaurantCard restaurantsList={restaurant} /></Link>)
                 }) : <h1>No such results found.</h1>}
             </div>
         </React.Fragment>
     )
 }
 
-const RestaurantCard = (props) => {
-    return (
-        <div className="card">
-            <img src={ImageDomain + props.restaurantsList.data.cloudinaryImageId} />
-            <h2>{props.restaurantsList.data.name}</h2>
-            <h3>{props.restaurantsList.data.cuisines.join(',')}</h3>
-            <h4>{props.restaurantsList.data.lastMileTravelString}</h4>
-        </div>
-    )
-}
 
 export default Body;
