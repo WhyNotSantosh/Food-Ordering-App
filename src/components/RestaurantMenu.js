@@ -1,20 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ImageDomain } from "../../constants";
+import { IMAGE_DOMAIN } from "../../constants";
 import Shimmer from "./Shimmer";
-
+import useRestaurant from "../utils/useRestaurant";
 const RestaurantMenu = () => {
-    const { id } = useParams(); // read dynamic url params
-    const [restaurant, setRestaurant] = useState(null);
-    useEffect(() => {
-        getRestaurantInfo();
-    }, []);
+    const { id } = useParams(); // read dynamic url params    
 
-    getRestaurantInfo = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/v4/full?lat=17.3358592&lng=78.527558&menuId="+id);
-        const json = await data.json();
-        setRestaurant(json.data);
-    }
+    const restaurant = useRestaurant(id);
+    
     if (!restaurant) {
         return <Shimmer />;
     }
@@ -22,7 +15,7 @@ const RestaurantMenu = () => {
         <div>
             <h1> Restaurant Menu : {id} </h1>
             <h2>{restaurant.name}</h2>
-            <img src={ImageDomain + restaurant.cloudinaryImageId} alt="item" />
+            <img src={IMAGE_DOMAIN + restaurant.cloudinaryImageId} alt="item" />
             <h3>{restaurant.area}</h3>
             <h3>{restaurant.city}</h3>
             <h3>{restaurant.avgRating} stars</h3>

@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { SwiggyPublicDataEndPoint } from "../../constants";
+import { SWIGGY_PUBLIC_DATA_END_POINT } from "../../constants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { filterRestaurants } from "../utils/helper";
 
-function filterRestaurants(searchText, restaurantsList) {
-    const filterData = restaurantsList.filter((restaurant) =>
-        restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
-    );
-    return filterData;
-}
 
 const Body = () => {
     const [searchText, setSearchText] = useState();
@@ -24,7 +19,7 @@ const Body = () => {
     }, []);
 
     getSwiggyData = async () => {
-        const data = await fetch(SwiggyPublicDataEndPoint);
+        const data = await fetch(SWIGGY_PUBLIC_DATA_END_POINT);
         const json = await data.json();
         console.log(json);
         setRestaurantsList(json?.data?.cards[2]?.data?.data?.cards);
