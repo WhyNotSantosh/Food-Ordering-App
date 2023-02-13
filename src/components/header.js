@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // never write inside a if condition
     useEffect(() => {
         console.log("use effect header");
     }, [isLoggedIn]); // called whenever isLoggedin Changes after first time render
+    const isOnline  = useOnline();
     return (
         <div className="header">
             <a href="/">
@@ -19,6 +21,7 @@ const Header = () => {
                 <li>Cart</li>
             </ul>
             <div>
+                <h1>{isOnline ? "🟢" : "🔴"}</h1>
                 {!isLoggedIn ? <button onClick={() => setIsLoggedIn(true)}>Login</button> : <button onClick={() => setIsLoggedIn(false)}>Logout</button>}
             </div>
         </div>

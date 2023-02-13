@@ -1,35 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { SWIGGY_PUBLIC_DATA_END_POINT } from "../../constants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { filterRestaurants } from "../utils/helper";
-
+import useRestaurantList from "../utils/useRestaurantList";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
     const [searchText, setSearchText] = useState();
-    const [restaurantsList, setRestaurantsList] = useState([]);
-    const [searchRestaurantList, setSearchRestaurantList] = useState([]);
-    console.log("hook");
-    console.log(useState());
-    console.log("hook2");
+    const [restaurantsListData, searchRestaurantList] = useRestaurantList();
+    const [restaurantsList, setRestaurantsList] = useState();
     useEffect(() => {
-        console.log("USE EFFECT body");
-        getSwiggyData();
-    }, []);
-
-    getSwiggyData = async () => {
-        const data = await fetch(SWIGGY_PUBLIC_DATA_END_POINT);
-        const json = await data.json();
-        console.log(json);
-        setRestaurantsList(json?.data?.cards[2]?.data?.data?.cards);
-        setSearchRestaurantList(json?.data?.cards[2]?.data?.data?.cards);
-    }
+        setRestaurantsList(restaurantsListData);
+    }, [restaurantsListData]);
+    const isOnline = useOnline();
     // if (searchRestaurantList.length === 0) {
     //     return null;
-    // };
-    console.log("render");
-    return (searchRestaurantList.length === 0) ? <Shimmer /> : (
+    // };    
+    if (!isOnline) {
+        return <h1>🔴You are offline. Please check your internet.</h1>
+    }
+    return (searchRestaurantList?.length === 0) ? <Shimmer /> : (
         <React.Fragment>
             <input type="text" className="search-input" placeholder="Search" value={searchText} onChange={(e) => {
                 setSearchText(e.target.value)

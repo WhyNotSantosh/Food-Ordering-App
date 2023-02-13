@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMAGE_DOMAIN } from "../../constants";
 import Shimmer from "./Shimmer";
-import useRestaurant from "../utils/useRestaurant";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
     const { id } = useParams(); // read dynamic url params    
 
-    const restaurant = useRestaurant(id);
+    const restaurant = useRestaurantMenu(id);
     
     if (!restaurant) {
         return <Shimmer />;
