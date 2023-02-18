@@ -6,7 +6,7 @@ const Header = () => {
     useEffect(() => {
         console.log("use effect header");
     }, [isLoggedIn]); // called whenever isLoggedin Changes after first time render
-    const isOnline  = useOnline();
+    const isOnline = useOnline();
     return (
         <div className="header">
             <a href="/">
@@ -18,6 +18,7 @@ const Header = () => {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
+                <li><Link to="/instamart">Instmart</Link></li>
                 <li>Cart</li>
             </ul>
             <div>

@@ -21,7 +21,7 @@ class About extends Component {
         return (
             <div>
                 <h1>About Us Page</h1>
-                <p>This is a page to tell you about us.</p>
+                <p>This is a page to tell you about us. I am lazy loaded</p>
                 <Outlet />
                 <ProfileFunctionalComponent />
             </div>
