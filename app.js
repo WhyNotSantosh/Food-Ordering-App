@@ -10,6 +10,8 @@ import Profile from './src/components/ProfileClass';
 import RestaurantMenu from './src/components/RestaurantMenu';
 import Shimmer from './src/components/Shimmer';
 
+
+if (module.hot) { module.hot.accept(); }
 //const h1 = (<h1>Hello from React Element</h1>); // React Element using JSX
 //const H3Component = () => (<h3>Hello from H3 Functional Component</h3>); // React Functional Component
 
