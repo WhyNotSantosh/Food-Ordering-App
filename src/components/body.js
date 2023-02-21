@@ -22,14 +22,15 @@ const Body = () => {
     }
     return (searchRestaurantList?.length === 0) ? <Shimmer /> : (
         <React.Fragment>
-            <input type="text" className="search-input" placeholder="Search" value={searchText} onChange={(e) => {
+            <div className="p-5 bg-gray-100 m-2">
+            <input type="text" className="p-2 m-2" placeholder="Search" value={searchText} onChange={(e) => {
                 setSearchText(e.target.value)
             }} />
-            <button className="search-btn" onClick={() => {
+            <button className="p-2 m-2 bg-orange-300 rounded-lg" onClick={() => {
                 const data = filterRestaurants(searchText, searchRestaurantList);
                 setRestaurantsList(data);
-            }}>Search</button>
-            <div className="restaurant-list">
+            }}>Search</button></div>
+            <div className="flex flex-wrap">
                 {restaurantsList?.length > 0 ? restaurantsList.map((restaurant) => {
                     return (<Link to={"/restaurant/" + restaurant.data.id} key={restaurant.data.id}><RestaurantCard restaurantsList={restaurant} /></Link>)
                 }) : <h1>No such results found.</h1>}
