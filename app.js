@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Body from './src/components/Body';
@@ -9,6 +9,7 @@ import Header from './src/components/Header';
 import Profile from './src/components/ProfileClass';
 import RestaurantMenu from './src/components/RestaurantMenu';
 import Shimmer from './src/components/Shimmer';
+import UserContext from './src/utils/UserContext';
 
 //const h1 = (<h1>Hello from React Element</h1>); // React Element using JSX
 //const H3Component = () => (<h3>Hello from H3 Functional Component</h3>); // React Functional Component
@@ -20,13 +21,23 @@ const Instamart = lazy(() => import("./src/components/Instamart"));
 const About = lazy(() => import("./src/components/About"));
 
 //Never call lazy load your component inside othe component. It might work but not good practice.
-const FoodVilla = () => (
-    <React.Fragment>
-        <Header />
-        <Outlet /> {/* This will be replaced by children based on path*/}
-        <Footer />
-    </React.Fragment>
-)
+const FoodVilla = () => {
+    const [user, setUser] = useState({
+        user: {
+            name: "Santosh1",
+            email: "san@gmail.com"
+        }
+    })
+    return (
+        <React.Fragment>
+            <Header />
+            <UserContext.Provider value={{user:user, setUser:setUser}}>   {/* This will be replace values in UserContext*/}                
+                <Outlet /> {/* This will be replaced by children based on path*/}
+                <Footer />
+            </UserContext.Provider>
+        </React.Fragment>
+    )
+}
 
 const appRouter = createBrowserRouter([
     {
