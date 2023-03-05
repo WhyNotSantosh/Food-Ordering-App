@@ -12,7 +12,7 @@ import Shimmer from './src/components/Shimmer';
 import UserContext from './src/utils/UserContext';
 import { Provider } from "react-redux";
 import store from './src/utils/store';
-
+import Cart from './src/components/Cart';
 //const h1 = (<h1>Hello from React Element</h1>); // React Element using JSX
 //const H3Component = () => (<h3>Hello from H3 Functional Component</h3>); // React Functional Component
 
@@ -72,6 +72,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurant/:id",
                 element: <RestaurantMenu />
+            },
+            {
+                path:"/cart",
+                element: <Cart />
             }
         ]
     }

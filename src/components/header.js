@@ -25,7 +25,7 @@ const Header = () => {
                 <li className="p-4"><Link to="/about">About</Link></li>
                 <li className="p-4"><Link to="/contact">Contact</Link></li>
                 <li className="p-4"><Link to="/instamart">Instmart</Link></li>
-                <li className="p-4">Cart- {counter.cart.items.length}</li>
+                <li className="p-4"> <Link to="/cart">Cart- {counter.cart.items.length}</Link></li>
             </ul>
             <div className="flex">
                 <h1 className="py-10">{isOnline ? "🟢" : "🔴"}</h1>

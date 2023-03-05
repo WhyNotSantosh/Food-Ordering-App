@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
     name: "cart",
     initialState: {
-        items: ["Banana", "Apple"]
+        items: []
     },
     reducers: {
         addItem: (state, action) => { //state is initial state, action is the data that is coming in from component action dispatch
