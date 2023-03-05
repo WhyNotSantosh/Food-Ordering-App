@@ -10,6 +10,8 @@ import Profile from './src/components/ProfileClass';
 import RestaurantMenu from './src/components/RestaurantMenu';
 import Shimmer from './src/components/Shimmer';
 import UserContext from './src/utils/UserContext';
+import { Provider } from "react-redux";
+import store from './src/utils/store';
 
 //const h1 = (<h1>Hello from React Element</h1>); // React Element using JSX
 //const H3Component = () => (<h3>Hello from H3 Functional Component</h3>); // React Functional Component
@@ -29,13 +31,15 @@ const FoodVilla = () => {
         }
     })
     return (
-        <React.Fragment>
-            <Header />
-            <UserContext.Provider value={{user:user, setUser:setUser}}>   {/* This will be replace values in UserContext*/}                
-                <Outlet /> {/* This will be replaced by children based on path*/}
-                <Footer />
-            </UserContext.Provider>
-        </React.Fragment>
+        <Provider store={store}>
+            <React.Fragment>
+                <Header />
+                <UserContext.Provider value={{ user: user, setUser: setUser }}>   {/* This will be replace values in UserContext*/}
+                    <Outlet /> {/* This will be replaced by children based on path*/}
+                    <Footer />
+                </UserContext.Provider>
+            </React.Fragment>
+        </Provider>
     )
 }
 
