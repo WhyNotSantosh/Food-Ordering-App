@@ -23,7 +23,7 @@ const Body = () => {
     }
     return (searchRestaurantList?.length === 0) ? <Shimmer /> : (
         <React.Fragment>
-            <div className="p-5 bg-gray-100 flex">
+            <div className="p-5 flex bg-stone-100">
                 <input type="text" className="p-2 m-2 h-8 rounded-md" placeholder="Search" value={searchText} onChange={(e) => {
                     setSearchText(e.target.value)
                     if (e.target.value.length === 0) {
@@ -41,9 +41,11 @@ const Body = () => {
                     title="Change value here to see how my context is updated in footer."
                 />
             </div>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap pb-8 pt-4 justify-evenly">
                 {restaurantsList?.length > 0 ? restaurantsList.map((restaurant) => {
-                    return (<Link to={"/restaurant/" + restaurant.data.id} key={restaurant.data.id}><RestaurantCard restaurantsList={restaurant} /></Link>)
+                    return (<Link to={"/restaurant/" + restaurant.data.id} key={restaurant.data.id} className="hover:shadow-lg border border-transparent transition ease-in-out delay-120 hover:-translate-y-1 hover:scale-110 duration-250 hover:border hover:border-black p-4 my-3">
+                        <RestaurantCard restaurantsList={restaurant} />
+                        </Link>)
                 }) : <h1>No such results found.</h1>}
             </div>
         </React.Fragment>
