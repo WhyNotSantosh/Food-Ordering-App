@@ -1,14 +1,19 @@
+import { Store } from "@reduxjs/toolkit";
+import React from "react";
 import { useEffect, useState, useContext } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false); // never write inside a if condition
+    const isOnline = useOnline();
+    const user = useContext(UserContext);
+    const counter = useSelector((state) => state);
     useEffect(() => {
         console.log("use effect header");
     }, [isLoggedIn]); // called whenever isLoggedin Changes after first time render
-    const isOnline = useOnline();
-    const user = useContext(UserContext)
+
     return (
         <div className="flex justify-between shadow-lg lg:bg-green-100 sm:bg-red-200 md:bg-blue-200">
             <a href="/">
@@ -20,7 +25,7 @@ const Header = () => {
                 <li className="p-4"><Link to="/about">About</Link></li>
                 <li className="p-4"><Link to="/contact">Contact</Link></li>
                 <li className="p-4"><Link to="/instamart">Instmart</Link></li>
-                <li className="p-4">Cart</li>
+                <li className="p-4"> <Link to="/cart">Cart- {counter.cart.items.length}</Link></li>
             </ul>
             <div className="flex">
                 <h1 className="py-10">{isOnline ? "🟢" : "🔴"}</h1>
