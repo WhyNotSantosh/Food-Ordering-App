@@ -6,11 +6,17 @@ import { filterRestaurants } from "../utils/helper";
 import useRestaurantList from "../utils/useRestaurantList";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
+import Modal from "./Modal";
+import Info from "./Info";
+
 const Body = () => {
     const [searchText, setSearchText] = useState();
     const [restaurantsListData, searchRestaurantList] = useRestaurantList();
     const [restaurantsList, setRestaurantsList] = useState();
     const { user, setUser } = useContext(UserContext);
+    const [openModal, setOpenModal] = useState(false);
+    const info = "I am main body functional component. I am loading data from an api usiing useEffect hook.";
+
     useEffect(() => {
         setRestaurantsList(restaurantsListData);
     }, [restaurantsListData]);
@@ -40,12 +46,14 @@ const Body = () => {
                     }}
                     title="Change value here to see how my context is updated in footer."
                 />
+                <Info openModal={setOpenModal}/>
             </div>
+            {openModal && <Modal closeModal={setOpenModal} info={info} />}
             <div className="flex flex-wrap pb-8 pt-4 justify-evenly">
                 {restaurantsList?.length > 0 ? restaurantsList.map((restaurant) => {
                     return (<Link to={"/restaurant/" + restaurant.data.id} key={restaurant.data.id} className="hover:shadow-lg border border-transparent transition ease-in-out delay-120 hover:-translate-y-1 hover:scale-110 duration-250 hover:border hover:border-black p-4 my-3">
                         <RestaurantCard restaurantsList={restaurant} />
-                        </Link>)
+                    </Link>)
                 }) : <h1>No such results found.</h1>}
             </div>
         </React.Fragment>
