@@ -13,17 +13,16 @@ class About extends Component {
         console.log('about class comp did mount');
         //best place to make an api call - equivalent to useEffect hook
         //in react we first render then make our api calls and update the component and re-render
-
     }
 
     render() {
         console.log('about class render');
         return (
             <div>
-                <h1>About Us Page</h1>
+                <h1 >About Us Page </h1>
                 <UserContext.Consumer>
-                    {({user}) => {
-                      return <span className="p-10 font-bold text-blue-600">{user.user.name} - {user.user.email}</span>
+                    {({ user }) => {
+                        return <span className="p-10 font-bold text-blue-600">{user.user.name} - {user.user.email}</span>
                     }}
                 </UserContext.Consumer>
                 <p>This is a page to tell you about us. I am lazy loaded</p>
