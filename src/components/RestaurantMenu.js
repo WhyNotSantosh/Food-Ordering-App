@@ -17,7 +17,7 @@ const RestaurantMenu = () => {
         dispatch(addItem(item));
     }
 
-    const handleRemoveItem = () => {
+    const removeFoodItem = () => {
         dispatch(removeItem());
     }
 
@@ -48,7 +48,7 @@ const RestaurantMenu = () => {
             <div className="">
                 <h1 className="font-bold border-b pt-5 pb-2  m-auto">Menu</h1>
                 <ul>
-                    {
+                    { restaurantMenuInfo ?
                         Object.values(restaurantMenuInfo).map((item, index) => {
                             return <li className="grid grid-cols-6 justify-center p-2 gap-2 m-2 border-b" key={index}>
                                 <>
@@ -65,7 +65,7 @@ const RestaurantMenu = () => {
                                         }
                                         <div class="text-center w-[118] mt-1 border-2 rounded-md">
                                             <button className="text-gray-800 font-extrabold py-2 px-3" onClick={() => {
-                                                handleRemoveItem()
+                                                removeFoodItem()
                                             }}>
                                                 -
                                             </button>
@@ -78,7 +78,7 @@ const RestaurantMenu = () => {
                                         </div>
                                     </div></>
                             </li>
-                        })
+                        }) : <span>Issue in rendering restaurant menu items.</span>
                     }
                 </ul>
             </div>
