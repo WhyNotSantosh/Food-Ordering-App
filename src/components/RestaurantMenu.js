@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMAGE_DOMAIN } from "../../constants";
 import Shimmer from "./Shimmer";
@@ -13,7 +12,7 @@ const RestaurantMenu = () => {
     const restaurantInfo = restaurant?.cards[0]?.card?.card?.info;
     const restaurantMenuInfo = restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card.card.itemCards;
     const dispatch = useDispatch();
-    const handleAddItem = (item) => {
+    const addFoodItem = (item) => {
         dispatch(addItem(item));
     }
 
@@ -51,7 +50,7 @@ const RestaurantMenu = () => {
                     {
                         Object.values(restaurantMenuInfo).map((item, index) => {
                             return <li className="grid grid-cols-6 justify-center p-2 gap-2 m-2 border-b" key={index}>
-                                {item?.card?.info?.imageId && <>
+                                <>
                                     <div className="col-span-5">
                                         <span className="font-bold">{item?.card?.info?.name}</span>
                                         <br />
@@ -60,7 +59,9 @@ const RestaurantMenu = () => {
                                         <span className="font-small text-sm text-slate-500 font-sans">{item?.card?.info?.description}</span>
                                     </div>
                                     <div className="relative justify-self-end ">
-                                        <img className="w-[118] rounded-md h-[96] object-cover" src={IMAGE_DOMAIN + item?.card?.info?.imageId} alt="item" />
+                                        {item?.card?.info?.imageId &&
+                                            <img className="w-[118] rounded-md h-[96] object-cover" src={IMAGE_DOMAIN + item?.card?.info?.imageId} alt="item" />
+                                        }
                                         <div class="text-center">
                                             {/* <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l" onClick={() => {
                                                 handleRemoveItem()
@@ -68,7 +69,7 @@ const RestaurantMenu = () => {
                                                 -
                                             </button> */}
                                             <button className="top-0 p-2 m-2 text-green-400 rounded-md font-bold border border-gray-300 w-24 h-10" onClick={() => {
-                                                handleAddItem(item)
+                                                addFoodItem(item)
                                             }}>Add</button>
                                             {/* <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r" onClick={() => {
                                                 handleAddItem(item)
@@ -77,7 +78,6 @@ const RestaurantMenu = () => {
                                             </button> */}
                                         </div>
                                     </div></>
-                                }
                             </li>
                         })
                     }

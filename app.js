@@ -26,8 +26,8 @@ const About = lazy(() => import("./src/components/About"));
 const FoodVilla = () => {
     const [user, setUser] = useState({
         user: {
-            name: "Santosh1",
-            email: "san@gmail.com"
+            name: "Santosh",
+            email: "san.santosh991@gmail.com"
         }
     })
     return (
@@ -52,15 +52,15 @@ const appRouter = createBrowserRouter([
             {
                 path: "/about",
                 element: <Suspense fallback={<h1>About page is loading</h1>}><About /></Suspense>,
-                children: [{
-                    path: "profile", // slash is not included because its not that open as localhost/profile
-                    element: <Profile namefromrouter={"Hello"} />
-                }]
+                // children: [{
+                //     path: "profile", // slash is not included because its not that open as localhost/profile
+                //     element: <Profile namefromrouter={"Hello"} />
+                // }]
             },
-            {
-                path: "/contact",
-                element: <Contact />
-            },
+            // {
+            //     path: "/contact",
+            //     element: <Contact />
+            // },
             {
                 path: "/instamart",
                 element: <Suspense fallback={<Shimmer />}><Instamart /></Suspense>

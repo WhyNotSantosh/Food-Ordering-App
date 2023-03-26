@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 const ProfileFunctionalComponent = () => {
 
-    const [count, setCount] = useState(0);
+
     //console.log("Func Comp")
     useEffect(() => {
         const timer = setInterval(() => {
@@ -14,10 +14,10 @@ const ProfileFunctionalComponent = () => {
             console.log('func component did unmount');
         }
     }, []);
-    return (<div>
-        <h2>Profile Functional Component</h2>
-        <h2>count: {count}</h2>
-        <button onClick={() => { setCount(count + 1) }}>Count+1 </button>
+    return (<div className="p-2 m-2">
+        <h2>Profile Links:</h2>
+        <h2>Linkedin: <a href={"https://www.linkedin.com/in/whynotsantosh/"} target="_blank">Click here</a></h2>
+        <h2>Github: <a href={"https://github.com/whynotsantosh"} target="_blank">Click here</a></h2>
     </div>)
 }
 

@@ -15,7 +15,7 @@ const Body = () => {
     const [restaurantsList, setRestaurantsList] = useState();
     const { user, setUser } = useContext(UserContext);
     const [openModal, setOpenModal] = useState(false);
-    const info = "I am main body functional component. I am loading data from an api usiing useEffect hook.";
+    const info = "I am main body functional component. I am loading data from an api using useEffect hook.";
 
     useEffect(() => {
         setRestaurantsList(restaurantsListData);
@@ -29,7 +29,8 @@ const Body = () => {
     }
     return (searchRestaurantList?.length === 0) ? <Shimmer /> : (
         <React.Fragment>
-            <div className="p-5 flex bg-stone-100">
+            <div className="p-5 flex bg-stone-100 text-sm justify-between">
+               <div>
                 <input type="text" className="p-2 m-2 h-8 rounded-md" placeholder="Search" value={searchText} onChange={(e) => {
                     setSearchText(e.target.value)
                     if (e.target.value.length === 0) {
@@ -42,10 +43,11 @@ const Body = () => {
                 }}>Search</button>
                 <input type="text" className="p-2 m-2 h-8 rounded-md" placeholder="Update Context" value={user.user.name}
                     onChange={(e) => {
-                        setUser({ user: { name: e.target.value, email: "newemail@gmail.com" } })
+                        setUser({ user: { name: e.target.value, email: "san.santosh991@gmail.com" } })
                     }}
-                    title="Change value here to see how my context is updated in footer."
+                    title="Change value here to see how my context is updated in About page."
                 />
+                </div>
                 <Info openModal={setOpenModal}/>
             </div>
             {openModal && <Modal closeModal={setOpenModal} info={info} />}
