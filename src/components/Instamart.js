@@ -13,10 +13,13 @@ const Section = ({ title, description, isVisible, setIsVisible }) => {
 const Instamart = () => {
     const [visibleSection, setVisibleSection] = useState("about");
     const [openModal, setOpenModal] = useState(false);
-    const info="I am Instamart component. I am lazy loaded with a different chunk. And all my sections state is lifted up to its parent for accordian functionality. Link to https://legacy.reactjs.org/docs/lifting-state-up.html";
+    const info = ["I am functional component.",
+        "I am lazy loaded with a different chunk to optimize performance of app.",
+        "All my sections state is lifted up to its parent for accordian functionality.",
+      "Link to React docs for lifting state up https://legacy.reactjs.org/docs/lifting-state-up.html"];
     return (
         <>
-            {openModal && <Modal closeModal={setOpenModal} info={info}/>}
+            {openModal && <Modal closeModal={setOpenModal} info={info} />}
             <div className="flex justify-between">
                 <h1 className="text-3xl p-2 m-2 font-bold">Instamart</h1>
                 <span className="relative inline-flex p-2 m-4">
@@ -31,7 +34,7 @@ const Instamart = () => {
                     </span>
                 </span>
             </div>
-           
+
             <Section title={"About Instamart"}
                 description={"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."}
                 isVisible={visibleSection === "about"}

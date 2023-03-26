@@ -26,15 +26,14 @@ const About = lazy(() => import("./src/components/About"));
 const FoodVilla = () => {
     const [user, setUser] = useState({
         user: {
-            name: "Santosh",
-            email: "san.santosh991@gmail.com"
+            name: ""
         }
     })
     return (
         <Provider store={store}>
             <React.Fragment>
-                <Header />
                 <UserContext.Provider value={{ user: user, setUser: setUser }}>   {/* This will be replace values in UserContext*/}
+                    <Header />
                     <Outlet /> {/* This will be replaced by children based on path*/}
                     <Footer />
                 </UserContext.Provider>
@@ -74,7 +73,7 @@ const appRouter = createBrowserRouter([
                 element: <RestaurantMenu />
             },
             {
-                path:"/cart",
+                path: "/cart",
                 element: <Cart />
             }
         ]

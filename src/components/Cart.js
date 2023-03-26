@@ -7,7 +7,7 @@ import Info from "./Info";
 const Cart = () => {
     const [openModal, setOpenModal] = useState(false);
     const [openInfoModal, setOpenInfoModal] = useState(false);
-    const infoModel = "I am functional component. I have subscribed to cart slice created using redux. All the items selected are retrieved from redux store.";
+    const infoModel = ["I am functional component.", "I have subscribed to cart slice created using redux.", "All the items selected are retrieved from redux store."];
     const cartItems = useSelector(store => store.cart.items);
     let uniqueFoodItems = [];
     if (cartItems.length > 0) {

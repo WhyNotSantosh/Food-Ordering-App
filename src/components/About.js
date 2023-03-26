@@ -12,7 +12,7 @@ class About extends Component {
         //initialise the state here - because whenever we load component, it calls the constructor first
         this.state = {
             openModel: false,
-            info: "I am a class component and I am lazy loaded. I am calling a functional component within me called Profile. I am also demoing how a useContext hook works by showing data is being typed in the input box beside search button from home page."
+            info: ["I am a class component", "I am lazy loaded.", "I am calling a functional component within me called Profile."]
         }
     }
     async componentDidMount() {
@@ -27,15 +27,16 @@ class About extends Component {
                 {this.state.openModel && <Modal closeModal={() => this.setState({ openModel: false })} info={this.state.info} />}
                 <div>
                     <div className="flex justify-between p-2 m-2">
-                        <h1 className="text-3xl  font-bold">About Me</h1>
+                        <h1 className="underline text-2xl  font-bold">About Me:</h1>
                         <Info openModal={() => this.setState({ openModel: true })} />
                     </div>
                     <UserContext.Consumer>
                         {({ user }) => {
                             return (
                                 <div className="grid p-2 m-2">
-                                    <span className="font-bold text-blue-600">Name - {user.user.name}</span>
-                                    <span className="font-bold text-blue-600">Email Id: - {user.user.email}</span>
+                                    <span className="font-bold text-blue-600">App Created by: Santosh</span>
+                                    <span className="font-bold text-blue-600">Email Id: san.santosh991@gmail.com</span>
+                                    <span className="">App description: This is a food ordering app design using React. The app was created with the idea of impementing major concepts inside React like functional and class components, inbuilt hooks and custom hooks.</span>
                                 </div>
                             )
                         }}
