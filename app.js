@@ -50,7 +50,7 @@ const appRouter = createBrowserRouter([
         children: [
             {
                 path: "/about",
-                element: <Suspense fallback={<h1>About page is loading</h1>}><About /></Suspense>,
+                element: <Suspense fallback={<Shimmer />}><About /></Suspense>,
                 // children: [{
                 //     path: "profile", // slash is not included because its not that open as localhost/profile
                 //     element: <Profile namefromrouter={"Hello"} />
