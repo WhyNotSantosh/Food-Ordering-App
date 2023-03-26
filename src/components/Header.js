@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <div className="flex justify-between shadow-lg items-center">
             <a href="/">
-                <img className="h-16 m-2 rounded-lg" alt="logo" src="https://i.pinimg.com/474x/e6/17/f1/e617f1bfb9af4d9cf132cd3dec0da072.jpg" />
+                <img className="h-20 m-2 rounded-lg" alt="logo" src="https://img.freepik.com/free-vector/fast-food-design_1308-181.jpg?t=st=1679843141~exp=1679843741~hmac=0dd6d1cf7d0d4a1ad351fb14b575758b206ddb752dccf09769a99cc6fd1f9d4b" />
             </a>
             <ul className="flex py-2 px-10 m-4">
                 {/* Link tag is converted to a tag but it wil not reload page as react-router-dom keeps track of it */}
