@@ -36,7 +36,7 @@ class About extends Component {
                                 <div className="grid p-2 m-2">
                                     <span className="font-bold text-blue-600">App Created by: Santosh</span>
                                     <span className="font-bold text-blue-600">Email Id: san.santosh991@gmail.com</span>
-                                    <span className="">App description: This is a food ordering app design using React. The app was created with the idea of impementing major concepts inside React like functional and class components, inbuilt hooks and custom hooks.</span>
+                                    <span className="">App description: This is a food ordering app created as single page app using React. I used Parcel.js as bundler. The app was created with the idea of implementing major concepts inside React like functional and class components, inbuilt hooks and custom hooks. Loading components on demands using different chunks to make app performant. Built shimmer to make UI more good. Used tailwind css for designing UI. </span>
                                 </div>
                             )
                         }}
