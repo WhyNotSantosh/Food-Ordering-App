@@ -14,7 +14,7 @@ const Cart = () => {
         let uniqueItems = [...new Set(cartItems)];
         uniqueFoodItems = uniqueItems.map(value => [value, cartItems.filter(str => str === value).length]);
     }
-    const info = "Order Placed succesfully! Bon Appétit!";
+    const info = ["Order Placed succesfully! Bon Appétit!"];
     const modalTitle = "Order Confirmation";
 
     //const cartItems = useSelector(store => store) // never subscribe to entire store, as anything changes in entire store, component re-renders again and again
@@ -42,15 +42,15 @@ const Cart = () => {
                             return <li className="grid grid-cols-6 justify-center p-2 gap-2 m-2 border-b" key={index}>
                                 <>
                                     <div className="col-span-5">
-                                        <span className="font-bold">{item[0]?.card?.info?.name} - [{item[1]}]</span>
+                                        <span className="font-bold">{item[0].name} - [{item[1]}]</span>
                                         <br />
-                                        <span>₹ {(item[0]?.card?.info?.price || item[0]?.card?.info?.defaultPrice) / 100}</span>
+                                        <span>₹ {(item[0]?.price || item[0]?.defaultPrice) / 100}</span>
                                         <br />
-                                        <span className="font-small text-sm text-slate-500 font-sans">{item[0]?.card?.info?.description}</span>
+                                        <span className="font-small text-sm text-slate-500 font-sans">{item[0]?.description}</span>
                                     </div>
                                     <div className="relative justify-self-end ">
-                                        {item[0]?.card?.info?.imageId &&
-                                            <img className="w-[118] rounded-md h-[96] object-cover" src={IMAGE_DOMAIN + item[0]?.card?.info?.imageId} alt="item" />
+                                        {item[0]?.imageId &&
+                                            <img className="w-[118] rounded-md h-[96] object-cover" src={IMAGE_DOMAIN + item[0]?.imageId} alt="item" />
                                         }
                                     </div></>
                             </li>
