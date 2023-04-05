@@ -44,7 +44,7 @@ const Footer = () => {
         <div className="flex grid-cols-3 p-2 m-2 justify-between">
           <div>Food Villa</div>
           <div>© {(new Date().getFullYear())} Food Villa</div>          
-          <div><a class="_1Az3W" href="https://www.facebook.com/" rel="nofollow noopener" alt="facebook" target="_blank"><img class="" width="24" height="24" alt="" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_48,h_48/icon-facebook_tfqsuc" /></a>
+          <div><a href="https://www.facebook.com/" rel="nofollow noopener" alt="facebook" target="_blank"><img width="24" height="24" alt="" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_48,h_48/icon-facebook_tfqsuc" /></a>
           </div>      
         </div>
       </div>

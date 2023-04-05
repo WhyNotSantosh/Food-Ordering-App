@@ -29,9 +29,9 @@ const Cart = () => {
     return (
         <>
             <div className="p-2 m-2"><Info openModal={setOpenInfoModal} /></div>
-            <div className="grid justify-center m-auto max-w-[70%] p-4">
+            <div className="grid justify-self-stretch m-auto max-w-[70%] p-4">
                 <div className="grid grid-cols-4 pb-4 border-b items-baseline">
-                    <span className="col-span-3  border rounded-lg bg-orange-200 p-2 m-2">Total Cart Items - {cartItems.length}</span>
+                    <span className="col-span-3  border rounded-lg bg-orange-200 p-2 m-2 w-60">Total Cart Items - {cartItems.length}</span>
                     <button className="col-span-1 justify-self-end border rounded-lg bg-slate-200 p-2" onClick={() => {
                         handleClearCartItems();
                     }} disabled={!cartItems.length}>Clear Cart</button>

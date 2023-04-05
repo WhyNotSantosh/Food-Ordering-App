@@ -67,12 +67,6 @@ const RestaurantMenu = () => {
                     <span className="p-2 font-bold">{restaurantInfo.totalRatingsString}</span>
                 </div>
             </div>}
-            {/* <div>
-
-                <button className="p-2 m-2 bg-green-400" onClick={() => {
-                    handleRemoveItem()
-                }}>Remove Item</button>
-            </div> */}
             <div className="">
                 <h1 className="font-bold border-b pt-5 pb-2  m-auto">Menu</h1>
                 <ul>
@@ -92,7 +86,7 @@ const RestaurantMenu = () => {
                                             {item?.imageId &&
                                                 <img className="w-[118] rounded-md h-[96] object-cover" src={IMAGE_DOMAIN + item?.imageId} alt="item" />
                                             }
-                                            <div class="text-center w-[118] mt-1 border-2 rounded-md">
+                                            <div className="text-center w-[118] mt-1 border-2 rounded-md">
                                                 <button className="text-gray-800 font-extrabold px-3" onClick={() => {
                                                     removeFoodItem()
                                                 }}>

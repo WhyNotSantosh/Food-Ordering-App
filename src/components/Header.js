@@ -34,7 +34,7 @@ const Header = () => {
                     console.log(user);
                 }}>Login</button> : <>
                 <span>{user.user.name}</span>
-                <svg class="h-5 w-6 text-red-500 cursor-pointer ml-2 mt-1"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
+                <svg className="h-5 w-6 text-red-500 cursor-pointer ml-2 mt-1"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"
                 onClick={() => {
                     setUser({ user: { name: "" } });
                 }}

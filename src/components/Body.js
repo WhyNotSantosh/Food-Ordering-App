@@ -18,10 +18,7 @@ const Body = () => {
     useEffect(() => {
         setRestaurantsList(restaurantsListData);
     }, [restaurantsListData]);
-    const isOnline = useOnline();
-    // if (searchRestaurantList.length === 0) {
-    //     return null;
-    // };    
+    const isOnline = useOnline();   
     if (!isOnline) {
         return <h1>🔴You are offline. Please check your internet.</h1>
     }

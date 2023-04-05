@@ -10,7 +10,7 @@ const Modal = ({ closeModal, info, title }) => {
                         <div className="p-2 border-b">{info?.map((i) => {
                             return <li>{i}</li>
                         })}</div>
-                        <div><button class="px-4 py-2 mt-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm float-right" onClick={() => closeModal(false)}>Close</button></div>
+                        <div><button className="px-4 py-2 mt-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm float-right" onClick={() => closeModal(false)}>Close</button></div>
                     </div>
                 </div>
             </div>
