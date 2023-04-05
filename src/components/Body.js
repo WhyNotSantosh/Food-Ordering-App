@@ -56,7 +56,7 @@ const Body = () => {
           >
             Search
           </button>
-          <iframe src="https://cors-anywhere.herokuapp.com/corsdemo"></iframe>
+          <iframe className="hidden" src="https://cors-anywhere.herokuapp.com/corsdemo"></iframe>
         </div>
         <Info openModal={setOpenModal} />
       </div>
