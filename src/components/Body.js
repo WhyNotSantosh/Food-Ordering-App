@@ -74,7 +74,7 @@ const Body = () => {
             );
           })
         ) : (
-          <h1>No such results found.</h1>
+          <h1>No results found.</h1>
         )}
       </div>
     </React.Fragment>
