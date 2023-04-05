@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import { SWIGGY_PUBLIC_DATA_END_POINT } from "../../constants";
+import restaurantsDataDummy from "../../restaurantsDataDummy.js";
 
 const useRestaurantList = () => {
-  const [restaurantsListData, setRestaurantsList] = useState([]);
-  const [searchRestaurantList, setSearchRestaurantList] = useState([]);
+  const [restaurantsListData, setRestaurantsList] = useState();
+  const [searchRestaurantList, setSearchRestaurantList] = useState();
   useEffect(() => {
     getRestaurantsListData();
   }, []);
 
   const getRestaurantsListData = async () => {
-    try {
+    const cors =  await fetch("https://cors-anywhere.herokuapp.com/corsdemo");
+
+    
+    try {    
       const data = await fetch(SWIGGY_PUBLIC_DATA_END_POINT);
       if (!data.ok) {
         throw new Error(`Error! status: ${response.status}`);
