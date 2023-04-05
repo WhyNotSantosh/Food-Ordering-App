@@ -9,8 +9,12 @@ const useRestaurantList = () => {
   }, []);
 
   const getRestaurantsListData = async () => {
-    const cors = await fetch("https://cors-anywhere.herokuapp.com/corsdemo");
-    console.log(cors);
+    //Todo: CORS 
+    // try {
+    //   const cors = await fetch("https://cors-anywhere.herokuapp.com/corsdemo");
+    //   console.log(cors);
+    // } catch (e) {}
+
     try {
       const data = await fetch(SWIGGY_PUBLIC_DATA_END_POINT);
       if (!data.ok) {
