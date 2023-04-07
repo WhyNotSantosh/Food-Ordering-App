@@ -7,6 +7,7 @@ import Info from "./Info";
 const Cart = () => {
     const [openModal, setOpenModal] = useState(false);
     const [openInfoModal, setOpenInfoModal] = useState(false);
+    let totalPrice = 0;
     const infoModel = ["I am functional component.", "I have subscribed to cart slice created using redux.", "All the items selected are retrieved from redux store."];
     const cartItems = useSelector(store => store.cart.items);
     let uniqueFoodItems = [];
@@ -44,7 +45,7 @@ const Cart = () => {
                                     <div className="col-span-5">
                                         <span className="font-bold">{item[0].name} - [{item[1]}]</span>
                                         <br />
-                                        <span>₹ {(item[0]?.price || item[0]?.defaultPrice) / 100}</span>
+                                        <span>₹ {((item[0]?.price || item[0]?.defaultPrice) / 100)*item[1]}</span>
                                         <br />
                                         <span className="font-small text-sm text-slate-500 font-sans">{item[0]?.description}</span>
                                     </div>

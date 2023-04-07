@@ -45,8 +45,8 @@ const RestaurantMenu = () => {
         dispatch(addItem(item));
     }
 
-    const removeFoodItem = () => {
-        dispatch(removeItem());
+    const removeFoodItem = (item) => {
+        dispatch(removeItem(item));
     }
 
     if (!restaurant) {
@@ -88,7 +88,7 @@ const RestaurantMenu = () => {
                                             }
                                             <div className="text-center w-[118] mt-1 border-2 rounded-md">
                                                 <button className="text-gray-800 font-extrabold px-3" onClick={() => {
-                                                    removeFoodItem()
+                                                    removeFoodItem(item)
                                                 }}>
                                                     -
                                                 </button>
